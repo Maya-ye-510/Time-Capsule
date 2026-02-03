@@ -1,0 +1,49 @@
+h1 { 
+color: black; 
+font-size: 90px; 
+/*padding: 10px;*/
+font-family: 'Georgia'; 
+font-weight: bold;
+/*margin-height: 15px
+margin-bottom: 15px;*/
+text-align: center;
+/*position: relative;*/
+margin: 0px;
+}
+
+p { 
+color: black; 
+font-size: 20px; 
+/*padding: 10px;*/
+font-family: 'tahoma'; 
+font-weight: regular;
+margin: 10px;
+text-align:center;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+/* !!!! */
+
+.header-title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-height: 15px;
+    margin-bottom: 15px;
+    font-weight: regular;
+    font-size: 120px;
+    color: white;
+}
+.header-subtitle{
+    display: flex;
+    font-weight: regular;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none
+}
