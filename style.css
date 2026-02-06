@@ -15,8 +15,8 @@ p {
   color: black; 
   font-size: 15px; 
   /*padding: 10px;*/
-  font-family: 'tahoma'; 
-  font-weight: regular;
+  font-family: 'Pixelify Sans'; 
+  font-weight: sans-serif;
   margin: 10px;
 }
 
@@ -77,4 +77,12 @@ p {
   font-size: 18px;
   text-align: center;
   text-decoration: none
+}
+
+
+.pixelify-sans-<uniquifier> {
+  font-family: "Pixelify Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
 }
