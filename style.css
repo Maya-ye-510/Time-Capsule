@@ -30,7 +30,7 @@ p {
 .wrapper {
   display: grid;
   grid-template-columns: 3.5fr 3fr 3.5fr;
-  color: white;
+  background-color: white;
 }
 
 .intro{
@@ -38,7 +38,7 @@ text-align: center;
 }
 
 .empty{
-  color: blue;
+  background-color: blue;
 }
 /* !!!! */
 
