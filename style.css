@@ -15,8 +15,10 @@ p {
   color: black; 
   font-size: 15px; 
   /*padding: 10px;*/
-  font-family: 'Pixelify Sans'; 
-  font-weight: sans-serif;
+  font-family: "Pixelify Sans", sans-serif; 
+  font-optical-sizing: auto;
+  font-weight: 450; /*Between 400 and 700*/
+  font-style: normal;
   text-align: left;
   margin: 10px;
 }
