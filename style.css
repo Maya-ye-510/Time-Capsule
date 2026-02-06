@@ -28,6 +28,11 @@ text-align:center;
   width: 50%;
 }
 
+.wrapper {
+  display: grid;
+  grid-template-columns: 
+}
+
 /* !!!! */
 
 .header-title{
