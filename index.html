@@ -32,10 +32,35 @@
         <p>DIV</p>
     </div>
 
-    <div id="clock">00:00:00</div>
-    <script src="clock.js"></script>
+    <div id="countdown">Loding</div>
+    <script src="countdown.js"></script>
     
     <script>
+    //Count Down:
+    const targetDate = new Date(2041, 2, 1, 0, 0, 0);
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+    
+  if (diff <= 0) {
+    document.getElementById("countdown").innerText = "Check the Time Capsule Now";
+    return;
+        }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+  document.getElementById("countdown").innerText =
+    `${days} Days ${hours} Hours ${minutes} ' ${seconds} ''`;
+        }
+    
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+            
     //Make the DIV element draggagle:
     dragElement(document.getElementById("mydiv"));
 
