@@ -41,6 +41,14 @@ p {
 .empty{
   background-color: blue;
 }
+
+#dragBox{
+  width: 200px;
+  height: 200px;
+  background-color: red;
+  position: absolute;
+}
+
 /* !!!! */
 
 .header-title{
