@@ -30,7 +30,7 @@ text-align:center;
 
 .wrapper {
   display: grid;
-  grid-template-columns: 
+  grid-template-columns: 1fr 1fr;
 }
 
 /* !!!! */
@@ -40,12 +40,12 @@ text-align:center;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-height: 15px;
     margin-bottom: 15px;
     font-weight: regular;
     font-size: 120px;
     color: white;
 }
+
 .header-subtitle{
     display: flex;
     font-weight: regular;
