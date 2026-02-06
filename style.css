@@ -31,10 +31,11 @@ p {
   display: grid;
   grid-template-columns: 3.5fr 3fr 3.5fr;
   background-color: white;
+  grid-gap: 1px;
 }
 
 .intro{
-text-align: center;
+  text-align: center;
 }
 
 .empty{
