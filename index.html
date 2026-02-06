@@ -44,7 +44,7 @@
       const diff = targetDate - now;
     
   if (diff <= 0) {
-    document.getElementById("countdown").innerText = "Check the Time Capsule Now";
+    document.getElementById("countdown").innerText = "Open the Time Capsule Now";
     return;
         }
 
@@ -54,7 +54,7 @@
       const seconds = Math.floor((diff / 1000) % 60);
 
   document.getElementById("countdown").innerText =
-    `${days} Days ${hours} Hours ${minutes} ' ${seconds} ''`;
+    `${days} Days ${hours} Hours ${minutes} ' ${seconds} ''until 15 years later`;
         }
     
         updateCountdown();
