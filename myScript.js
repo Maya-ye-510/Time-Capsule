@@ -16,7 +16,7 @@
       const seconds = Math.floor((diff / 1000) % 60);
 
   document.getElementById("countdown").innerText =
-    `${days} Days ${hours} Hours ${minutes} ' ${seconds} ''until 15 years later`;
+    `${days} Days ${hours} Hours ${minutes} ' ${seconds} ''until Feb 1, 2041`;
         }
     
         updateCountdown();
@@ -108,4 +108,5 @@ const cards = document.querySelectorAll(".card");
     card.style.left = x + "px";
     card.style.top = y + "px";
   });
+
 
