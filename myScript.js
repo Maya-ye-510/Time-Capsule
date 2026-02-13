@@ -66,3 +66,46 @@
             document.onmousemove = null;
         }
     }
+
+// Random div scattering:
+const cards = document.querySelectorAll(".card");
+  const placed = [];
+  const allowedOverlap = 10; //pixels
+
+  function isOverlapping(x, y, width, height) {
+    for (let box of placed) {
+
+      // Shrink effective boundaries by allowedOverlap
+      if (
+        x < box.x + box.width - allowedOverlap &&
+        x + width - allowedOverlap > box.x &&
+        y < box.y + box.height - allowedOverlap &&
+        y + height - allowedOverlap > box.y
+      ) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  cards.forEach(card => {
+    const rect = card.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+
+    let x, y;
+    let attempts = 0;
+
+    do {
+      x = Math.random() * (window.innerWidth - width);
+      y = Math.random() * (window.innerHeight - height);
+      attempts++;
+      if (attempts > 1000) break;
+    } while (isOverlapping(x, y, width, height));
+
+    placed.push({ x, y, width, height });
+
+    card.style.left = x + "px";
+    card.style.top = y + "px";
+  });
+
