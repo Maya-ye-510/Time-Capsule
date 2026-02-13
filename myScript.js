@@ -109,4 +109,33 @@ const cards = document.querySelectorAll(".card");
     card.style.top = y + "px";
   });
 
+//Pop up images:
+const cards = document.querySelectorAll(".card");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const closeBtn = document.getElementById("close");
+
+cards.forEach(card => {
+  card.addEventListener("click", function(e) {
+    e.preventDefault();  // 阻止跳转
+
+    const img = card.querySelector("img");
+    lightboxImg.src = img.src;
+
+    lightbox.style.display = "flex";
+  });
+});
+
+closeBtn.addEventListener("click", () => {
+  lightbox.style.display = "none";
+});
+
+lightbox.addEventListener("click", (e) => {
+  if (e.target !== lightboxImg) {
+    lightbox.style.display = "none";
+  }
+});
+
+
+
 
