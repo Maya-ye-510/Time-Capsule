@@ -34,7 +34,6 @@ title {
   text-align: center;
   margin: 10px;
 }
-
 .center {
   display: block;
   margin-left: auto;
@@ -110,7 +109,7 @@ title {
   font-style: normal;
 }
 
-.card {
+    .card {
       position: absolute;
       width: 175px;
       height: 175px;
@@ -125,8 +124,8 @@ title {
       transition: transform 0.2s ease;
     }
 
-.card:hover {
-     transform: scale(1.05);
+    .card:hover {
+      transform: scale(1.05);
     }
 
     .card img {
