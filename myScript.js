@@ -74,7 +74,7 @@ function dragElement(elmnt) {
 }
 
 // Random div scattering:
-const cards = document.querySelectorAll(".card");
+var cards = document.querySelectorAll(".card");
   const placed = [];
   const allowedOverlap = 10; //pixels
 
@@ -114,4 +114,5 @@ const cards = document.querySelectorAll(".card");
     card.style.left = x + "px";
     card.style.top = y + "px";
   });
+
 
