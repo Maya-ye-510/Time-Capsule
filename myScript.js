@@ -115,4 +115,68 @@ var cards = document.querySelectorAll(".card");
     card.style.top = y + "px";
   });
 
+//Image Opening Javascript
 
+const viewer = document.getElementById("floatingViewer");
+const expandedImg = document.getElementById("expandedImg");
+const closeBtn = document.getElementById("closeBtn");
+
+let originRect = null;
+let currentCardImg = null;
+
+document.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("click", () => {
+        const img = card.querySelector("img");
+        currentCardImg = img;
+
+        originRect = img.getBoundingClientRect();
+
+        // Set viewer to original position
+        viewer.style.display = "block";
+        viewer.style.top = originRect.top + "px";
+        viewer.style.left = originRect.left + "px";
+        viewer.style.width = originRect.width + "px";
+        viewer.style.height = originRect.height + "px";
+
+        expandedImg.src = img.src;
+
+        // Force reflow
+        viewer.offsetWidth;
+
+        // Calculate final centered size
+        const finalWidth = window.innerWidth * 0.7;
+        const finalHeight = window.innerHeight * 0.7;
+
+        const finalTop = (window.innerHeight - finalHeight) / 2;
+        const finalLeft = (window.innerWidth - finalWidth) / 2;
+
+        viewer.style.transition = "all 450ms cubic-bezier(.2,.8,.2,1)";
+        viewer.style.top = finalTop + "px";
+        viewer.style.left = finalLeft + "px";
+        viewer.style.width = finalWidth + "px";
+        viewer.style.height = finalHeight + "px";
+
+        closeBtn.style.display = "block";
+    });
+});
+
+closeBtn.addEventListener("click", () => {
+    viewer.style.top = originRect.top + "px";
+    viewer.style.left = originRect.left + "px";
+    viewer.style.width = originRect.width + "px";
+    viewer.style.height = originRect.height + "px";
+
+    closeBtn.style.display = "none";
+
+    setTimeout(() => {
+        viewer.style.display = "none";
+        viewer.style.transition = "none";
+    }, 450);
+});
+
+// ESC key close
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && viewer.style.display === "block") {
+        closeBtn.click();
+    }
+});
