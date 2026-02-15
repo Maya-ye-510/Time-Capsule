@@ -56,10 +56,6 @@ title {
   background-color: white;
 }
 
-#mydiv {
-  z-index:9;
-}
-
 #countdown {
   position: fixed;
   font-family: "Pixelify Sans", sans-serif; 
