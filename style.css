@@ -51,28 +51,6 @@ title {
   font-size: 20px;
 }
 
-/* !!!! */
-
-.header-title{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 15px;
-  font-weight: regular;
-  font-size: 120px;
-  color: white;
-}
-
-.header-subtitle{
-  display: flex;
-  font-weight: regular;
-  font-size: 18px;
-  text-align: center;
-  text-decoration: none
-}
-
-
 .pixelify-sans-<uniquifier> {
   font-family: "Pixelify Sans", sans-serif;
   font-optical-sizing: auto;
