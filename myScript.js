@@ -24,7 +24,7 @@
         
             
 //Make the DIV element draggagle:
-var cards = document.getElementsByClassName("card");
+var cards = document.getElementsByClassName("image-card");
 
 for (var i = 0; i < cards.length; i++) {
     dragElement(cards[i]);
@@ -74,7 +74,7 @@ function dragElement(elmnt) {
 }
 
 // Random div scattering:
-var cards = document.querySelectorAll(".card");
+var cards = document.querySelectorAll(".image-card");
   const placed = [];
   const allowedOverlap = 10; //pixels
 
@@ -174,5 +174,6 @@ document.addEventListener("click", () => {
         imageViewerBox.style.transition = "none";
     }, 450);
 });
+
 
 
