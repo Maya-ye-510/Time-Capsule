@@ -24,7 +24,7 @@
         
             
 //Make the DIV element draggagle:
-var cards = document.getElementsByClassName("image-card");
+var cards = document.querySelectorAll(".image-card, .text-card");
 
 for (var i = 0; i < cards.length; i++) {
     dragElement(cards[i]);
@@ -74,7 +74,7 @@ function dragElement(elmnt) {
 }
 
 // Random div scattering:
-var cards = document.querySelectorAll(".image-card");
+var cards = document.querySelectorAll(".image-card, .text-card");
   const placed = [];
   const allowedOverlap = 10; //pixels
 
@@ -175,5 +175,71 @@ document.addEventListener("click", () => {
     }, 450);
 });
 
+// Text box opening and closing
 
+const textExpandBox = document.getElementById("textExpandBox");
+const textExpandInner = document.getElementById("textExpandInner");
 
+let textOriginRect = null;
+let textExpandOpen = false;
+
+document.querySelectorAll(".text-card").forEach(card => {
+
+    card.addEventListener("click", (evt) => {
+
+        const targetPanelId = card.getAttribute("data-panel");
+        const sourceTemplate = document.getElementById(targetPanelId);
+        if (!sourceTemplate) return;
+
+        textOriginRect = card.getBoundingClientRect();
+
+        textExpandInner.innerHTML = sourceTemplate.innerHTML;
+
+        textExpandBox.style.display = "block";
+        textExpandBox.style.top = textOriginRect.top + "px";
+        textExpandBox.style.left = textOriginRect.left + "px";
+        textExpandBox.style.width = textOriginRect.width + "px";
+        textExpandBox.style.height = textOriginRect.height + "px";
+        textExpandBox.style.transition = "none";
+
+        textExpandBox.offsetHeight;
+
+        const finalWidth = window.innerWidth * 0.6;
+        const finalHeight = window.innerHeight * 0.6;
+
+        const finalTop = (window.innerHeight - finalHeight) / 2;
+        const finalLeft = (window.innerWidth - finalWidth) / 2;
+
+        textExpandBox.style.transition = "all 450ms cubic-bezier(.2,.8,.2,1)";
+        textExpandBox.style.top = finalTop + "px";
+        textExpandBox.style.left = finalLeft + "px";
+        textExpandBox.style.width = finalWidth + "px";
+        textExpandBox.style.height = finalHeight + "px";
+
+        setTimeout(() => {
+            textExpandBox.classList.add("active");
+        }, 300);
+
+        textExpandOpen = true;
+        evt.stopPropagation();
+    });
+});
+
+document.addEventListener("click", (evt) => {
+    if (!textExpandOpen) return;
+    if (textExpandBox.contains(evt.target)) return;
+
+    textExpandBox.classList.remove("active");
+
+    textExpandBox.style.top = textOriginRect.top + "px";
+    textExpandBox.style.left = textOriginRect.left + "px";
+    textExpandBox.style.width = textOriginRect.width + "px";
+    textExpandBox.style.height = textOriginRect.height + "px";
+
+    textExpandOpen = false;
+
+    setTimeout(() => {
+        textExpandBox.style.display = "none";
+        textExpandBox.style.transition = "none";
+    }, 450);
+});
