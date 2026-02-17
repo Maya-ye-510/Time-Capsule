@@ -119,33 +119,38 @@ var cards = document.querySelectorAll(".card");
 
 const viewer = document.getElementById("floatingViewer");
 const expandedImg = document.getElementById("expandedImg");
-const closeBtn = document.getElementById("closeBtn");
 
 let originRect = null;
-let currentCardImg = null;
+let isOpen = false;
 
 document.querySelectorAll(".card").forEach(card => {
-    card.addEventListener("click", () => {
-        const img = card.querySelector("img");
-        currentCardImg = img;
+    card.addEventListener("click", (e) => {
 
+        const img = card.querySelector("img");
         originRect = img.getBoundingClientRect();
 
-        // Set viewer to original position
+        expandedImg.src = img.src;
+
+        // Set initial position (exact thumbnail position)
         viewer.style.display = "block";
         viewer.style.top = originRect.top + "px";
         viewer.style.left = originRect.left + "px";
         viewer.style.width = originRect.width + "px";
         viewer.style.height = originRect.height + "px";
-
-        expandedImg.src = img.src;
+        viewer.style.transition = "none";
 
         // Force reflow
-        viewer.offsetWidth;
+        viewer.offsetHeight;
 
-        // Calculate final centered size
-        const finalWidth = window.innerWidth * 0.7;
-        const finalHeight = window.innerHeight * 0.7;
+        // Calculate centered final size (maintains aspect ratio)
+        const imgRatio = originRect.width / originRect.height;
+        let finalWidth = window.innerWidth * 0.75;
+        let finalHeight = finalWidth / imgRatio;
+
+        if (finalHeight > window.innerHeight * 0.75) {
+            finalHeight = window.innerHeight * 0.75;
+            finalWidth = finalHeight * imgRatio;
+        }
 
         const finalTop = (window.innerHeight - finalHeight) / 2;
         const finalLeft = (window.innerWidth - finalWidth) / 2;
@@ -156,17 +161,22 @@ document.querySelectorAll(".card").forEach(card => {
         viewer.style.width = finalWidth + "px";
         viewer.style.height = finalHeight + "px";
 
-        closeBtn.style.display = "block";
+        isOpen = true;
+
+        e.stopPropagation(); // prevent immediate close
     });
 });
 
-closeBtn.addEventListener("click", () => {
+// Close when clicking anywhere
+document.addEventListener("click", () => {
+    if (!isOpen) return;
+
     viewer.style.top = originRect.top + "px";
     viewer.style.left = originRect.left + "px";
     viewer.style.width = originRect.width + "px";
     viewer.style.height = originRect.height + "px";
 
-    closeBtn.style.display = "none";
+    isOpen = false;
 
     setTimeout(() => {
         viewer.style.display = "none";
@@ -174,9 +184,10 @@ closeBtn.addEventListener("click", () => {
     }, 450);
 });
 
-// ESC key close
+// ESC key also closes
 document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && viewer.style.display === "block") {
-        closeBtn.click();
+    if (e.key === "Escape" && isOpen) {
+        document.dispatchEvent(new Event("click"));
     }
 });
+
