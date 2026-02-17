@@ -123,3 +123,30 @@ title {
     object-fit: cover;
     box-shadow: 0 30px 80px rgba(0,0,0,0.45);
 }
+
+.text-template {
+    display: none;
+}
+
+.text-expand-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform-origin: top left;
+    z-index: 9500;
+    display: none;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+    overflow: auto;
+}
+
+.text-expand-inner {
+    padding: 40px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.text-expand-box.active .text-expand-inner {
+    opacity: 1;
+}
