@@ -117,79 +117,62 @@ var cards = document.querySelectorAll(".card");
 
 //Image Opening Javascript
 
-const viewer = document.getElementById("floatingViewer");
-const expandedImg = document.getElementById("expandedImg");
+const imageViewerBox = document.getElementById("imageViewerBox");
+const imageViewerImg = document.getElementById("imageViewerImg");
 
-let originRect = null;
-let isOpen = false;
+let imageOriginRect = null;
+let imageViewerOpen = false;
 
-document.querySelectorAll(".card").forEach(card => {
-    card.addEventListener("click", (e) => {
+document.querySelectorAll(".image-card").forEach(card => {
 
-        const img = card.querySelector("img");
-        originRect = img.getBoundingClientRect();
+    card.addEventListener("click", (event) => {
 
-        expandedImg.src = img.src;
+        const innerImg = card.querySelector("img");
+        imageOriginRect = innerImg.getBoundingClientRect();
 
-        // Set initial position (exact thumbnail position)
-        viewer.style.display = "block";
-        viewer.style.top = originRect.top + "px";
-        viewer.style.left = originRect.left + "px";
-        viewer.style.width = originRect.width + "px";
-        viewer.style.height = originRect.height + "px";
-        viewer.style.transition = "none";
+        imageViewerImg.src = innerImg.src;
 
-        // Force reflow
-        viewer.offsetHeight;
+        imageViewerBox.style.display = "block";
+        imageViewerBox.style.top = imageOriginRect.top + "px";
+        imageViewerBox.style.left = imageOriginRect.left + "px";
+        imageViewerBox.style.width = imageOriginRect.width + "px";
+        imageViewerBox.style.height = imageOriginRect.height + "px";
+        imageViewerBox.style.transition = "none";
 
-        // Calculate centered final size (maintains aspect ratio)
-        const imgRatio = originRect.width / originRect.height;
-        let widthRatio = 0.60; //Percent width of image
-        let finalWidth = window.innerWidth * widthRatio;
-        let finalHeight = finalWidth / imgRatio;
+        imageViewerBox.offsetHeight;
 
-        if (finalHeight > window.innerHeight * widthRatio) {
-            finalHeight = window.innerHeight * widthRatio;
-            finalWidth = finalHeight * imgRatio;
-        }
+        const widthRatio = 0.6; //Percent width of viewer of enlarged image
+        const finalWidth = window.innerWidth * widthRatio;
+        const finalHeight = window.innerHeight * widthRatio;
 
         const finalTop = (window.innerHeight - finalHeight) / 2;
         const finalLeft = (window.innerWidth - finalWidth) / 2;
 
-        viewer.style.transition = "all 450ms cubic-bezier(.2,.8,.2,1)";
-        viewer.style.top = finalTop + "px";
-        viewer.style.left = finalLeft + "px";
-        viewer.style.width = finalWidth + "px";
-        viewer.style.height = finalHeight + "px";
+        imageViewerBox.style.transition = "all 450ms cubic-bezier(.2,.8,.2,1)";
+        imageViewerBox.style.top = finalTop + "px";
+        imageViewerBox.style.left = finalLeft + "px";
+        imageViewerBox.style.width = finalWidth + "px";
+        imageViewerBox.style.height = finalHeight + "px";
 
-        isOpen = true;
-
-        e.stopPropagation(); // prevent immediate close
+        imageViewerOpen = true;
+        event.stopPropagation();
     });
 });
 
-// Close when clicking anywhere
 document.addEventListener("click", () => {
-    if (!isOpen) return;
+    if (!imageViewerOpen) return;
 
-    viewer.style.top = originRect.top + "px";
-    viewer.style.left = originRect.left + "px";
-    viewer.style.width = originRect.width + "px";
-    viewer.style.height = originRect.height + "px";
+    imageViewerBox.style.top = imageOriginRect.top + "px";
+    imageViewerBox.style.left = imageOriginRect.left + "px";
+    imageViewerBox.style.width = imageOriginRect.width + "px";
+    imageViewerBox.style.height = imageOriginRect.height + "px";
 
-    isOpen = false;
+    imageViewerOpen = false;
 
     setTimeout(() => {
-        viewer.style.display = "none";
-        viewer.style.transition = "none";
+        imageViewerBox.style.display = "none";
+        imageViewerBox.style.transition = "none";
     }, 450);
-});
-
-// ESC key also closes
-document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && isOpen) {
-        document.dispatchEvent(new Event("click"));
-    }
 });
 
 
