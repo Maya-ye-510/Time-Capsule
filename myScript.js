@@ -144,11 +144,12 @@ document.querySelectorAll(".card").forEach(card => {
 
         // Calculate centered final size (maintains aspect ratio)
         const imgRatio = originRect.width / originRect.height;
-        let finalWidth = window.innerWidth * 0.75;
+        let widthRatio = 0.60; //Percent width of image
+        let finalWidth = window.innerWidth * widthRatio;
         let finalHeight = finalWidth / imgRatio;
 
-        if (finalHeight > window.innerHeight * 0.75) {
-            finalHeight = window.innerHeight * 0.75;
+        if (finalHeight > window.innerHeight * widthRatio) {
+            finalHeight = window.innerHeight * widthRatio;
             finalWidth = finalHeight * imgRatio;
         }
 
@@ -190,4 +191,5 @@ document.addEventListener("keydown", (e) => {
         document.dispatchEvent(new Event("click"));
     }
 });
+
 
