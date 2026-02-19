@@ -186,11 +186,11 @@ document.querySelectorAll(".image-card").forEach(card => {
         if (screenWidth < screenHeight) {
           // Width is limiting
           finalWidth = baseSize;
-          finalHeight = baseSize * (3/4);
+          finalHeight = baseSize * (2/3);
         } else {
           // Height is limiting
           finalHeight = baseSize;
-          finalWidth = baseSize * (4/3);
+          finalWidth = baseSize * (3/2);
         }
 
         const finalTop = (window.innerHeight - finalHeight) / 2;
@@ -301,6 +301,7 @@ document.addEventListener("click", (evt) => {
         textExpandBox.style.transition = "none";
     }, 450);
 });
+
 
 
 
