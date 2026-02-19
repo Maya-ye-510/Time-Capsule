@@ -131,6 +131,7 @@ title {
     transition: filter 0.35s ease, transform 0.35s ease;
 }
 
+.image-viewer-box.enable-hover 
 .image-hover-wrapper:hover img {
     filter: brightness(60%);
     transform: scale(1.04);
