@@ -135,13 +135,27 @@ document.querySelectorAll(".image-card").forEach(card => {
         // Set image
         imageViewerImg.src = innerImg.src;
 
-        // Inject dynamic hover text
-        hoverTitleElement.textContent =
-            card.getAttribute("data-hover-title") || "";
+        // 🔥 Only inject hover text if card is hoverable
+        if (card.classList.contains("hoverable")) {
 
-        hoverDescElement.textContent =
-            card.getAttribute("data-hover-desc") || "";
+            hoverTitleElement.textContent =
+                card.getAttribute("data-hover-title") || "";
 
+            hoverDescElement.textContent =
+                card.getAttribute("data-hover-desc") || "";
+
+            document
+                .querySelector(".image-hover-text")
+                .style.display = "flex";
+
+        } else {
+
+            // Hide hover text container entirely
+            document
+                .querySelector(".image-hover-text")
+                .style.display = "none";
+        }
+        
         // Continue with your expand animation...
         imageViewerBox.style.display = "block";
         imageViewerBox.style.top = imageOriginRect.top + "px";
@@ -254,4 +268,5 @@ document.addEventListener("click", (evt) => {
         textExpandBox.style.transition = "none";
     }, 450);
 });
+
 
