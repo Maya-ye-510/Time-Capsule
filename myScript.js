@@ -170,8 +170,28 @@ document.querySelectorAll(".image-card").forEach(card => {
 
         imageViewerBox.offsetHeight;
 
-        const finalWidth = window.innerWidth * 0.6;
-        const finalHeight = window.innerHeight * 0.6;
+        // Get viewport dimensions
+        const screenWidth = window.innerWidth;
+        const screenHeight = window.innerHeight;
+
+        // Find the shorter edge
+        const shortEdge = Math.min(screenWidth, screenHeight);
+
+        // Base size = 80% of the shorter edge
+        const baseSize = shortEdge * 0.8;
+
+        // Calculate 4:3 dimensions
+        let finalWidth, finalHeight;
+
+        if (screenWidth < screenHeight) {
+          // Width is limiting
+          finalWidth = baseSize;
+          finalHeight = baseSize * (3/4);
+        } else {
+          // Height is limiting
+          finalHeight = baseSize;
+          finalWidth = baseSize * (4/3);
+        }
 
         const finalTop = (window.innerHeight - finalHeight) / 2;
         const finalLeft = (window.innerWidth - finalWidth) / 2;
@@ -281,6 +301,7 @@ document.addEventListener("click", (evt) => {
         textExpandBox.style.transition = "none";
     }, 450);
 });
+
 
 
 
