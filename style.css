@@ -117,11 +117,42 @@ title {
     display: none;
 }
 
-.image-viewer-box img {
+.image-hover-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.image-hover-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+    transition: filter 0.35s ease, transform 0.35s ease;
+}
+
+.image-hover-wrapper:hover img {
+    filter: brightness(60%);
+    transform: scale(1.04);
+}
+
+.image-hover-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+}
+
+.image-hover-wrapper:hover .image-hover-text {
+    opacity: 1;
 }
 
 .text-template {
