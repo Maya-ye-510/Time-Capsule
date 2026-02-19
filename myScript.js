@@ -191,6 +191,9 @@ document.querySelectorAll(".image-card").forEach(card => {
 document.addEventListener("click", () => {
     if (!imageViewerOpen) return;
 
+    hoverTitleElement.textContent = "";
+    hoverDescElement.textContent = "";
+
     imageViewerBox.style.top = imageOriginRect.top + "px";
     imageViewerBox.style.left = imageOriginRect.left + "px";
     imageViewerBox.style.width = imageOriginRect.width + "px";
@@ -202,6 +205,12 @@ document.addEventListener("click", () => {
         imageViewerBox.style.display = "none";
         imageViewerBox.style.transition = "none";
     }, 450);
+});
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && imageViewerOpen) {
+        document.dispatchEvent(new Event("click"));
+    }
 });
 
 // Text box opening and closing
@@ -272,6 +281,7 @@ document.addEventListener("click", (evt) => {
         textExpandBox.style.transition = "none";
     }, 450);
 });
+
 
 
 
