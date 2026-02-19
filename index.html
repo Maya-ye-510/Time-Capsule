@@ -25,7 +25,13 @@
         </div>
     </div>
 
-    <a class="image-card" href="#"><img src="MyPhoto.JPG"><p>Hi, it's me</p></a>
+    <!-- Change data-hover-title to change title when hover, change data-hover-desc to change description -->
+    <a class="image-card" href="#" data-hover-title="It's me!"
+     data-hover-desc="This is a photo of me when I was young.">
+        <img src="MyPhoto.JPG"><p>Hi, it's me</p>
+    </a>
+
+    
     <a class="image-card" href="#"><img src="https://picsum.photos/300/300?2"><p>"WOW" moment</p></a>
     <a class="image-card" href="#"><img src="https://picsum.photos/300/300?3"><p>What is important?</p></a>
     <a class="image-card" href="#"><img src="https://picsum.photos/300/300?4"><p>My favourite</p></a>
@@ -41,7 +47,13 @@
 
     <!-- For opening and closing images -->
     <div id="imageViewerBox" class="image-viewer-box">
-        <img id="imageViewerImg">
+        <div class="image-hover-wrapper">
+            <img id="imageViewerImg">
+            <div class="image-hover-text">
+                <h2 id="hoverTitle"></h2>
+                <p id="hoverDesc"></p>
+            </div>
+        </div>
     </div>
 
     <!-- For opening and closing text boxes -->
