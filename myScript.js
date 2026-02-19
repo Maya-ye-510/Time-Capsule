@@ -121,6 +121,7 @@ const imageViewerBox = document.getElementById("imageViewerBox");
 const imageViewerImg = document.getElementById("imageViewerImg");
 const hoverTitleElement = document.getElementById("hoverTitle");
 const hoverDescElement = document.getElementById("hoverDesc");
+const hoverWrapper = document.getElementById("hoverWrapper");
 
 let imageOriginRect = null;
 let imageViewerOpen = false;
@@ -268,5 +269,6 @@ document.addEventListener("click", (evt) => {
         textExpandBox.style.transition = "none";
     }, 450);
 });
+
 
 
