@@ -119,6 +119,8 @@ var cards = document.querySelectorAll(".image-card, .text-card");
 
 const imageViewerBox = document.getElementById("imageViewerBox");
 const imageViewerImg = document.getElementById("imageViewerImg");
+const hoverTitleElement = document.getElementById("hoverTitle");
+const hoverDescElement = document.getElementById("hoverDesc");
 
 let imageOriginRect = null;
 let imageViewerOpen = false;
@@ -130,8 +132,17 @@ document.querySelectorAll(".image-card").forEach(card => {
         const innerImg = card.querySelector("img");
         imageOriginRect = innerImg.getBoundingClientRect();
 
+        // Set image
         imageViewerImg.src = innerImg.src;
 
+        // Inject dynamic hover text
+        hoverTitleElement.textContent =
+            card.getAttribute("data-hover-title") || "";
+
+        hoverDescElement.textContent =
+            card.getAttribute("data-hover-desc") || "";
+
+        // Continue with your expand animation...
         imageViewerBox.style.display = "block";
         imageViewerBox.style.top = imageOriginRect.top + "px";
         imageViewerBox.style.left = imageOriginRect.left + "px";
@@ -141,14 +152,14 @@ document.querySelectorAll(".image-card").forEach(card => {
 
         imageViewerBox.offsetHeight;
 
-        const widthRatio = 0.6; //Percent width of viewer of enlarged image
-        const finalWidth = window.innerWidth * widthRatio;
-        const finalHeight = window.innerHeight * widthRatio;
+        const finalWidth = window.innerWidth * 0.6;
+        const finalHeight = window.innerHeight * 0.6;
 
         const finalTop = (window.innerHeight - finalHeight) / 2;
         const finalLeft = (window.innerWidth - finalWidth) / 2;
 
-        imageViewerBox.style.transition = "all 450ms cubic-bezier(.2,.8,.2,1)";
+        imageViewerBox.style.transition =
+            "all 450ms cubic-bezier(.2,.8,.2,1)";
         imageViewerBox.style.top = finalTop + "px";
         imageViewerBox.style.left = finalLeft + "px";
         imageViewerBox.style.width = finalWidth + "px";
@@ -243,3 +254,4 @@ document.addEventListener("click", (evt) => {
         textExpandBox.style.transition = "none";
     }, 450);
 });
+
