@@ -121,7 +121,6 @@ const imageViewerBox = document.getElementById("imageViewerBox");
 const imageViewerImg = document.getElementById("imageViewerImg");
 const hoverTitleElement = document.getElementById("hoverTitle");
 const hoverDescElement = document.getElementById("hoverDesc");
-const hoverWrapper = document.getElementById("hoverWrapper");
 
 let imageOriginRect = null;
 let imageViewerOpen = false;
@@ -139,6 +138,8 @@ document.querySelectorAll(".image-card").forEach(card => {
         // 🔥 Only inject hover text if card is hoverable
         if (card.classList.contains("hoverable")) {
 
+            imageViewerBox.classList.add("enable-hover");
+
             hoverTitleElement.textContent =
                 card.getAttribute("data-hover-title") || "";
 
@@ -150,6 +151,8 @@ document.querySelectorAll(".image-card").forEach(card => {
                 .style.display = "flex";
 
         } else {
+
+            imageViewerBox.classList.remove("enable-hover");
 
             // Hide hover text container entirely
             document
@@ -269,6 +272,7 @@ document.addEventListener("click", (evt) => {
         textExpandBox.style.transition = "none";
     }, 450);
 });
+
 
 
 
