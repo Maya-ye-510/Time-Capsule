@@ -53,10 +53,7 @@ title {
 }
 
 #countdown {
-  position: fixed;
   font-family: "Pixelify Sans", sans-serif; 
-  top: 20px;
-  right: 20px;
   font-size: 20px;
 }
 
