@@ -1,3 +1,7 @@
+body{
+  overflow: hidden;
+}
+
 p { 
   color: black; 
   font-size: 15px; 
@@ -21,6 +25,7 @@ title {
   text-align: center;
   margin: 10px;
 }
+
 .center {
   display: block;
   margin-left: auto;
@@ -34,7 +39,6 @@ title {
   grid-template-rows: 3.5fr 3fr 3.5fr;
   width: 100vw; height: 100vh;
   background-color: green;
-  grid-gap: 1px;
 }
 
 .intro{
