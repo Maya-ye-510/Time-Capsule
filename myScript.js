@@ -135,7 +135,7 @@ document.querySelectorAll(".image-card").forEach(card => {
         // Set image
         imageViewerImg.src = innerImg.src;
 
-        // 🔥 Only inject hover text if card is hoverable
+        // Only inject hover text if card is hoverable
         if (card.classList.contains("hoverable")) {
 
             imageViewerBox.classList.add("enable-hover");
@@ -301,6 +301,7 @@ document.addEventListener("click", (evt) => {
         textExpandBox.style.transition = "none";
     }, 450);
 });
+
 
 
 
