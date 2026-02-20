@@ -23,7 +23,7 @@
         setInterval(updateCountdown, 1000);
         
             
-//Make the DIV element draggagle:
+//Make the DIV element draggable:
 var cards = document.querySelectorAll(".image-card, .text-card");
 
 for (var i = 0; i < cards.length; i++) {
@@ -177,10 +177,10 @@ document.querySelectorAll(".image-card").forEach(card => {
         // Find the shorter edge
         const shortEdge = Math.min(screenWidth, screenHeight);
 
-        // Base size = 80% of the shorter edge
-        const baseSize = shortEdge * 0.8;
+        // Base size = 70% of the shorter edge
+        const baseSize = shortEdge * 0.7;
 
-        // Calculate 4:3 dimensions
+        // Calculate 3:2 dimensions
         let finalWidth, finalHeight;
 
         if (screenWidth < screenHeight) {
@@ -262,8 +262,28 @@ document.querySelectorAll(".text-card").forEach(card => {
 
         textExpandBox.offsetHeight;
 
-        const finalWidth = window.innerWidth * 0.6;
-        const finalHeight = window.innerHeight * 0.6;
+        // Get viewport dimensions
+        const screenWidth = window.innerWidth;
+        const screenHeight = window.innerHeight;
+
+        // Find the shorter edge
+        const shortEdge = Math.min(screenWidth, screenHeight);
+
+        // Base size = 70% of the shorter edge
+        const baseSize = shortEdge * 0.7;
+
+        // Calculate 3:2 dimensions
+        let finalWidth, finalHeight;
+
+        if (screenWidth < screenHeight) {
+          // Width is limiting
+          finalWidth = baseSize;
+          finalHeight = baseSize * (2/3);
+        } else {
+          // Height is limiting
+          finalHeight = baseSize;
+          finalWidth = baseSize * (3/2);
+        }
 
         const finalTop = (window.innerHeight - finalHeight) / 2;
         const finalLeft = (window.innerWidth - finalWidth) / 2;
@@ -301,6 +321,7 @@ document.addEventListener("click", (evt) => {
         textExpandBox.style.transition = "none";
     }, 450);
 });
+
 
 
 
