@@ -31,6 +31,7 @@ title {
 .wrapper {
   display: grid;
   grid-template-columns: 3.5fr 3fr 3.5fr;
+  grid-template-rows: 3.5fr 3fr 3.5fr;
   background-color: white;
   grid-gap: 1px;
 }
