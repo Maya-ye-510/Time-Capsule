@@ -140,10 +140,10 @@ document.querySelectorAll(".image-card").forEach(card => {
 
             imageViewerBox.classList.add("enable-hover");
 
-            hoverTitleElement.textContent =
+            hoverTitleElement.innerHTML =
                 card.getAttribute("data-hover-title") || "";
 
-            hoverDescElement.textContent =
+            hoverDescElement.innerHTML =
                 card.getAttribute("data-hover-desc") || "";
 
             document
@@ -301,6 +301,7 @@ document.addEventListener("click", (evt) => {
         textExpandBox.style.transition = "none";
     }, 450);
 });
+
 
 
 
